@@ -1,0 +1,9 @@
+{% include "header.html" %}
+    <form method="POST" action="/upload/" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-primary" type="submit" value="Upload">
+    </form>
+
+
+{% include "footer.html" %}
