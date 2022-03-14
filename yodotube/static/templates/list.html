@@ -1,0 +1,11 @@
+{% include "header.html" %}
+{% load static %}
+    <div class="row">
+        {% for i in videos %}
+        <div class="col">
+            <span class="text-light"> {{i}}</span>
+        </div>    
+        {% endfor %}
+    </div>
+
+{% include "footer.html" %}

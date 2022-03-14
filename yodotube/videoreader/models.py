@@ -17,6 +17,20 @@ class UploadModel(models.Model):
             print("CACA".str(ce));
         
         try:
-            api.add('akaka');
+            hash = api.add(fd);
+            api.pin(hash);
         except ipfshttpclient.exceptions.ConnectionError as ce:
             print("Upload Error:". str(ce));
+
+    def listVideo():
+        try:
+            api = ipfshttpclient.connect("/ip4/127.0.0.1/tcp/5001");
+        except ipfshttpclient.exceptions.ConnectionError as ce:
+            print("CACA".str(ce));
+        videolist = api.pin.ls(type="recursive");
+        videolist = videolist.as_json().values();
+        hashlist = [];
+        for i in videolist:
+            for v in i:
+                hashlist.append(v);
+        return hashlist;

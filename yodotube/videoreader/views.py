@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+import json
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import UploadModel
 from .forms import UploadForm
@@ -21,3 +22,7 @@ def upload(request):
     else:
         form = UploadForm();
         return render(request, 'upload.html', {'form': form});
+def stream(request):
+    videos = UploadModel.listVideo();
+    print(videos)
+    return render(request, 'list.html', {'videos': videos});
