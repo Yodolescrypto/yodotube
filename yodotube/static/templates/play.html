@@ -1,0 +1,20 @@
+{% include "header.html" %}
+{% load static %} 
+<div class="row align-items-center justify-content-center">
+    <div class="col-lg-4 center">
+<video id="my-video" class="video-js" controls preload="auto" width="640" height="264" poster="" data-setup="{}"
+>
+<source src="{% static video %}" type="video/mp4" />
+
+<p class="vjs-no-js">
+  To view this video please enable JavaScript, and consider upgrading to a
+  web browser that
+  <a href="https://videojs.com/html5-video-support/" target="_blank"
+    >supports HTML5 video</a
+  >
+</p>
+</video>
+</div>
+</div>
+ <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+{% include "footer.html" %}

@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index),
     path('upload/', views.upload),
     path('stream', views.stream),
+    path('play/<str:video>', views.play),
 ]

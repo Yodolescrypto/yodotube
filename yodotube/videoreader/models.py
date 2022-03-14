@@ -34,3 +34,14 @@ class UploadModel(models.Model):
             for v in i:
                 hashlist.append(v);
         return hashlist;
+
+    def getVideo(hash):
+        try:
+            api = ipfshttpclient.connect("/ip4/127.0.0.1/tcp/5001");
+        except ipfshttpclient.exceptions.ConnectionError as ce:
+            print("CACA".str(ce));
+
+        print(hash);
+        api.get(hash);
+        os.rename(os.path.basename(hash), "static/videos/"+hash);
+        return (hash);

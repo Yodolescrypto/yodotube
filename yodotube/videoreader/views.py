@@ -26,3 +26,8 @@ def stream(request):
     videos = UploadModel.listVideo();
     print(videos)
     return render(request, 'list.html', {'videos': videos});
+
+def play(request, video):
+    video=UploadModel.getVideo(video);
+    print(video)
+    return render(request, 'play.html', {'video': video});
