@@ -1,23 +1,69 @@
 # yodotube
 Yodotoube
 
+## Install
 
-LE TOUBE:
+You will need to install [go-ipfs](https://github.com/ipfs/go-ipfs) first.
 
-1) Installer un node IPFS sur la machine: https://github.com/ipfs/go-ipfs.
+### System Requirements
 
-2) Installer python3
+You will need to install python3 and pip:
 
-3) Installer pip
+```bash
+$> sudo apt update
+$> sudo apt install python3 python3-venv
+```
 
-4) Install Django avec pip
+### Python part
 
-5) Cloner le projet
+Clone the project:
 
-6) Installer les modules manquants et les noter dans ce README (g la flemme)
+```bash
+$> git clone git@github.com:Yodolescrypto/yodotube.git
+```
 
-7) Lancer le node IPFS en mode daemon: ipfs daemon&
+Start a new virtualenv then install pip dependencies:
 
-8) Lancer le projet Django: python3 manage.py runserver
+```bash
+$> cd yodotube/yodotube
+$> virtualenv $PWD/venv
+$(venv)> source $PWD/venv/bin/activate
+$(venv)> pip3 install -r requirements.txt
+```
 
-9) Se rendre sur localhost:XXXX
+Make the migrations and create your superuser (the first time only):
+
+```bash
+$(venv)> python3 manage.py migrate
+$(venv)> python3 manage.py createsuperuser
+```
+
+### Starting to run everything
+
+Last step: Start IPFS node in daemon mode:
+
+```bash
+$> ipfs daemon&
+```
+
+You may use `screen`:
+
+```bash
+$> screen -dmS ipfs ipfs daemon
+$> screen -r ipfs #to get it back, then ctrl-a, d to detach it again
+```
+
+Then start your django project:
+
+```bash
+$> screen -dmS yodotube $PWD/venv/bin/python3 manage.py runserver
+$> screen -r yodotube #to get it back, then ctrl-a, d to detach it again
+```
+
+## Use it
+
+Go on [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+### Admin Panel
+
+You may find the admin panel here: [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
